@@ -20,7 +20,7 @@ function setup(app, data) {
   });
 
   app.get('/tasks/view/:id', function(req, res) {
-    let task = data.findTaskById(req.params.id);
+    let task = data.findTasById(req.params.id);
     if (task.errMsg) {
       model = {errText: 'Task Not Found', 
         errDetails: task.errMsg};
@@ -68,7 +68,7 @@ function setup(app, data) {
     }
   });
 
-  app.get('/tasks/edit/:id', function(req, res) {
+  app.get('/tasks/edit/id', function(req, res) {
     let task = data.findTaskById(req.params.id);
     if (task.errMsg) {
       model = {errText: 'Task Not Found', 
@@ -86,7 +86,7 @@ function setup(app, data) {
     }
   });
 
-  app.post('/tasks/edit/:id', function(req, res) {
+  app.post('/tasks/edit/id', function(req, res) {
     let result = data.editTask(req.params.id,
       req.body.title, req.body.description,
       req.body.boardName);
